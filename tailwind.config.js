@@ -4,9 +4,12 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        short: { raw: '(max-height: 650px)' },
+        short: { raw: '(max-height: 670px)' },
         xshort: { raw: '(max-height: 560px)' },
         xxshort: { raw: '(max-height: 490px)' },
+      },
+      colors: {
+        'nica-blue': '#2176c4'
       },
     },
   },
