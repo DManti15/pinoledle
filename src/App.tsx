@@ -242,7 +242,7 @@ function App() {
 
   return (
     <Div100vh>
-      <div className="flex h-full flex-col overflow-hidden xxshort:overflow-auto">
+      <div className="flex h-full flex-col overflow-hidden xxshort:overflow-auto sm:overflow-auto">
         <Navbar
           setIsInfoModalOpen={setIsInfoModalOpen}
           setIsStatsModalOpen={setIsStatsModalOpen}

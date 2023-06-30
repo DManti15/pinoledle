@@ -18,10 +18,10 @@ export const Navbar = ({
 }: Props) => {
   return (
     <div className="navbar bg-nica-blue">
-      <div className="navbar-content px-5 h-40">
-        <div className="flex w-[3.5rem]">
+      <div className="navbar-content px-3 h-40 max-w-lg mx-auto">
+        <div className="flex w-[3.5rem] sm:w-[4rem]">
           <InformationCircleIcon
-            className="h-6 w-6 cursor-pointer dark:stroke-white"
+            className="h-7 w-7 sm:h-8 sm:w-8 cursor-pointer dark:stroke-white"
             onClick={() => setIsInfoModalOpen(true)}
           />
           {ENABLE_ARCHIVED_GAMES && (
@@ -31,14 +31,14 @@ export const Navbar = ({
             />
           )}
         </div>
-        <h1 className="text-3xl font-bold dark:text-white">{GAME_TITLE}</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold dark:text-white">{GAME_TITLE}</h1>
         <div className="right-icons">
           <ChartBarIcon
-            className="mr-3 h-6 w-6 cursor-pointer dark:stroke-white"
+            className="mr-1 sm:mr-3 h-7 w-7 sm:h-8 sm:w-8 cursor-pointer dark:stroke-white"
             onClick={() => setIsStatsModalOpen(true)}
           />
           <CogIcon
-            className="h-6 w-6 cursor-pointer dark:stroke-white"
+            className="h-7 w-7 sm:h-8 sm:w-8 cursor-pointer dark:stroke-white"
             onClick={() => setIsSettingsModalOpen(true)}
           />
         </div>

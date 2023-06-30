@@ -56,7 +56,7 @@ export const Keyboard = ({
 
   return (
     <div className="bg-nica-blue">
-      <div className="mx-auto px-1 pt-6 pb-6 sm:px-6 md:max-w-7xl lg:px-8 short:pb-2 short:pt-2">
+      <div className="mx-auto px-2 pt-6 pb-6 sm:px-6 md:max-w-7xl lg:px-8 short:pb-2 short:pt-2">
         <div className="mb-1 flex justify-center">
           {['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'].map((key) => (
             <Key
