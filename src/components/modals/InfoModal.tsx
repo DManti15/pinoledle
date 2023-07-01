@@ -8,63 +8,75 @@ type Props = {
 
 export const InfoModal = ({ isOpen, handleClose }: Props) => {
   return (
-    <BaseModal title="How to play" isOpen={isOpen} handleClose={handleClose}>
+    <BaseModal title="Cómo se juega" isOpen={isOpen} handleClose={handleClose}>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        Guess the word in 6 tries. After each guess, the color of the tiles will
-        change to show how close your guess was to the word.
+        Tenés que adivinar la palabra del día. Después de cada intento, el color de las teclas
+        cambiará para mostrarte que tan cerca estás de acertar la palabra.
       </p>
 
       <div className="mb-1 mt-4 flex justify-center">
         <Cell
           isRevealing={true}
           isCompleted={true}
-          value="W"
+          value="B"
           status="correct"
         />
-        <Cell value="E" isCompleted={true} />
+        <Cell value="I" isCompleted={true} />
+        <Cell value="C" isCompleted={true} />
+        <Cell value="H" isCompleted={true} />
         <Cell value="A" isCompleted={true} />
-        <Cell value="R" isCompleted={true} />
-        <Cell value="Y" isCompleted={true} />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        The letter W is in the word and in the correct spot.
+        La palabra contiene la letra B y esta en el lugar correcto.
       </p>
 
       <div className="mb-1 mt-4 flex justify-center">
-        <Cell value="P" isCompleted={true} />
-        <Cell value="I" isCompleted={true} />
+        <Cell value="T" isCompleted={true} />
+        <Cell value="U" isCompleted={true} />
         <Cell
           isRevealing={true}
           isCompleted={true}
-          value="L"
+          value="A"
           status="present"
         />
-        <Cell value="O" isCompleted={true} />
-        <Cell value="T" isCompleted={true} />
+        <Cell value="N" isCompleted={true} />
+        <Cell value="I" isCompleted={true} />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        The letter L is in the word but in the wrong spot.
+        La palabra contiene la letra A pero esta en el lugar incorrecto.
       </p>
 
       <div className="mb-1 mt-4 flex justify-center">
-        <Cell value="V" isCompleted={true} />
-        <Cell value="A" isCompleted={true} />
-        <Cell value="G" isCompleted={true} />
-        <Cell isRevealing={true} isCompleted={true} value="U" status="absent" />
+        <Cell value="D" isCompleted={true} />
         <Cell value="E" isCompleted={true} />
+        <Cell value="A" isCompleted={true} />
+        <Cell isRevealing={true} isCompleted={true} value="C" status="absent" />
+        <Cell value="A" isCompleted={true} />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        The letter U is not in the word in any spot.
+        La palabra no contiene la letra C.
       </p>
-
-      <p className="mt-6 text-sm italic text-gray-500 dark:text-gray-300">
-        This is an open source version of the word guessing game we all know and
-        love -{' '}
+      <p className="mt-5 text-sm text-gray-500 dark:text-gray-300">
+        En Pinoledle, la palabra del día es una que proviene de la jerga de Nicaragua.
+        Puede ser una palabra utilizada en distintas generaciones y/o lugares del país,
+        incluyendo expresiones y apodos.
+      </p>
+      <p className="mt-5 text-sm italic text-gray-500 dark:text-gray-300">
+        Esta es la version nica del famoso juego Wordle -{' '}
+        <a
+          href="https://github.com/DManti15/pinoledle"
+          className="font-bold underline"
+          target='_blank'
+        >
+          aquí tenés el código nica 
+        </a>{' '}- y
+        -{' '}
         <a
           href="https://github.com/cwackerfuss/react-wordle"
           className="font-bold underline"
+          target='_blank'
         >
-          check out the code here
+          aquí tenés el código original 
         </a>{' '}
       </p>
     </BaseModal>

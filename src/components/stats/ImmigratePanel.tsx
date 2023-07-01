@@ -2,10 +2,7 @@ import { SaveIcon } from '@heroicons/react/outline'
 import { useState } from 'react'
 
 import { decrypt } from '../../lib/encryption'
-import {
-  saveGameStateToLocalStorage,
-  saveStatsToLocalStorage,
-} from '../../lib/localStorage'
+import { saveGameStateToLocalStorage, saveStatsToLocalStorage } from '../../lib/localStorage'
 import { MigrationStats } from '../modals/MigrateStatsModal'
 
 export const ImmigratePanel = () => {
@@ -55,7 +52,7 @@ export const ImmigratePanel = () => {
     if (
       textarea &&
       window.confirm(
-        'Are you sure you want to override the statistics on this device? This action is not reversable.'
+        'Estás seguro que querés sobreescribir tus estadisticas en este dispositivo? Está acción no se puede revertir.'
       )
     ) {
       var migrationStats = JSON.parse(
@@ -71,7 +68,7 @@ export const ImmigratePanel = () => {
         saveStatsToLocalStorage(migrationStats.statistics)
       }
 
-      alert('The site will now reload.')
+      alert('La página se volverá a cargar.')
 
       window.location.reload()
     }
@@ -83,7 +80,7 @@ export const ImmigratePanel = () => {
         htmlFor="message"
         className="mb-2 block text-left text-sm font-medium text-gray-900 dark:text-gray-400"
       >
-        Paste your migration code:
+        Pegá tu código de transferencia:
       </label>
       <textarea
         onChange={(e) => handleImmigrationCodeChange(e)}
@@ -101,7 +98,7 @@ export const ImmigratePanel = () => {
         {isSaveButtonEnabled && (
           <SaveIcon className="mr-2 h-6 w-6 cursor-pointer dark:stroke-white" />
         )}
-        Save
+        Guardar
       </button>
     </div>
   )
