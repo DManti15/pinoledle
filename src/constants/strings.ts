@@ -1,6 +1,6 @@
 export const GAME_TITLE = process.env.REACT_APP_GAME_NAME!
 
-export const WIN_MESSAGES = ['Barbarooooo!', 'Eso pinolero', 'Le haces huevo prix!']
+export const WIN_MESSAGES = ['Barbarooooo!', 'Eso pinolero!', 'Le haces huevo prix!']
 export const GAME_COPIED_MESSAGE = 'Juego copiado al portapapeles'
 export const NOT_ENOUGH_LETTERS_MESSAGE = 'Te hacen falta letras mae'
 export const WORD_NOT_FOUND_MESSAGE = 'La palabra no existe prix'
