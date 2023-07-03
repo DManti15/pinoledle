@@ -88,7 +88,19 @@ export const StatsModal = ({
         numberOfGuessesMade={numberOfGuessesMade}
       />
       {(isGameLost || isGameWon) && (
-        <div className="mt-5 columns-2 items-center items-stretch justify-center text-center dark:text-white sm:mt-6">
+        <div className="mt-5">
+          <h4 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
+            Respuesta: {solution}
+          </h4>
+          <p>
+            <strong>Definición:</strong> definition<br />
+            <span className="italic">e.g.: example</span>
+          </p>
+          <hr className="mt-4 border-gray-500" />
+        </div>
+      )}
+      {(isGameLost || isGameWon) && (
+        <div className="mt-4 columns-2 items-center items-stretch justify-center text-center dark:text-white">
           <div className="inline-block w-full">
             {(!ENABLE_ARCHIVED_GAMES || isLatestGame) && (
               <div>
