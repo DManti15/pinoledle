@@ -67,7 +67,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           href="https://github.com/DManti15/pinoledle"
           className="font-bold underline"
           target='_blank'
-          rel='nonreferrer'
+          rel='noreferrer'
         >
           aquí tenés el código nica 
         </a>{' '}- y
@@ -76,7 +76,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
           href="https://github.com/cwackerfuss/react-wordle"
           className="font-bold underline"
           target='_blank'
-          rel='nonreferrer'
+          rel='noreferrer'
         >
           aquí tenés el código original 
         </a>{' '}
