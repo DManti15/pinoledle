@@ -17,7 +17,7 @@ export const Navbar = ({
   setIsSettingsModalOpen,
 }: Props) => {
   return (
-    <div className="navbar bg-nica-blue">
+    <div className="navbar bg-nica-blue dark:bg-inherit">
       <div className="navbar-content px-3 h-40 max-w-lg mx-auto">
         <div className="flex w-[3.5rem] sm:w-[4rem]">
           <InformationCircleIcon
