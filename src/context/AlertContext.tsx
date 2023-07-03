@@ -66,6 +66,13 @@ export const AlertProvider = ({ children }: Props) => {
               onClose()
             }
           }, durationMs)
+        } else {
+          setTimeout(() => {
+            setIsVisible(false)
+            if (onClose) {
+              onClose()
+            }
+          }, durationMs)
         }
       }, delayMs)
     },
