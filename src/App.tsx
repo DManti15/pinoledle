@@ -19,7 +19,7 @@ import { useAlert } from './context/AlertContext'
 import { isInAppBrowser } from './lib/browser'
 import { getStoredIsHighContrastMode, loadGameStateFromLocalStorage, saveGameStateToLocalStorage, setStoredIsHighContrastMode } from './lib/localStorage'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
-import { findFirstUnusedReveal, getGameDate, getIsLatestGame, isWinningWord, isWordInWordList, setGameDate, solution, solutionGameDate, unicodeLength } from './lib/words'
+import { findFirstUnusedReveal, getGameDate, getIsLatestGame, isWinningWord, isWordInWordList, setGameDate, solution, solutionDefinition, solutionExample, solutionGameDate, unicodeLength } from './lib/words'
 
 import './App.css'
 
@@ -285,6 +285,8 @@ function App() {
             isOpen={isStatsModalOpen}
             handleClose={() => setIsStatsModalOpen(false)}
             solution={solution}
+            definition={solutionDefinition}
+            example={solutionExample}
             guesses={guesses}
             gameStats={stats}
             isLatestGame={isLatestGame}

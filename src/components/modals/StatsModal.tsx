@@ -26,6 +26,8 @@ type Props = {
   isOpen: boolean
   handleClose: () => void
   solution: string
+  definition: string
+  example: string
   guesses: string[]
   gameStats: GameStats
   isLatestGame: boolean
@@ -44,6 +46,8 @@ export const StatsModal = ({
   isOpen,
   handleClose,
   solution,
+  definition,
+  example,
   guesses,
   gameStats,
   isLatestGame,
@@ -92,9 +96,9 @@ export const StatsModal = ({
           <h4 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
             Respuesta: {solution}
           </h4>
-          <p>
-            <strong>Definición:</strong> definition<br />
-            <span className="italic">e.g.: example</span>
+          <p className="dark:text-gray-100">
+            <strong>Definición:</strong> {definition}<br />
+            <span className="italic">e.g.: {example}</span>
           </p>
           <hr className="mt-4 border-gray-500" />
         </div>
