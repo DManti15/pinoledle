@@ -29,7 +29,7 @@ export const MigrateStatsModal = ({ isOpen, handleClose }: Props) => {
         the new device.
       </p>
 
-      <div className="w-full columns-3 gap-0">
+      <div className="w-full flex justify-evenly">
         <div className="mb-4 flex items-center">
           <p className="mb-0 flex text-sm font-medium text-gray-900 dark:text-gray-300">
             This is my:
@@ -48,12 +48,12 @@ export const MigrateStatsModal = ({ isOpen, handleClose }: Props) => {
           />
           <label
             htmlFor="emigrate-radio-button"
-            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            className="ml-2 max-w-[4rem] text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             old device
           </label>
         </div>
-        <div className="flex items-center">
+        <div className="mb-4 flex items-center">
           <input
             checked={!isEmigrateVisible}
             onChange={() => setIsEmigrateVisible(false)}
@@ -66,7 +66,7 @@ export const MigrateStatsModal = ({ isOpen, handleClose }: Props) => {
           />
           <label
             htmlFor="immigrate-radio-button"
-            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            className="ml-2 max-w-[4rem] text-sm font-medium text-gray-900 dark:text-gray-300"
           >
             new device
           </label>

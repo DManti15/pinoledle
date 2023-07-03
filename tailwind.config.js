@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       screens: {
         short: { raw: '(max-height: 670px)' },
-        xshort: { raw: '(max-height: 560px)' },
+        xshort: { raw: '(max-height: 570px)' },
         xxshort: { raw: '(max-height: 490px)' },
       },
       colors: {

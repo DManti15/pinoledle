@@ -89,7 +89,7 @@ export const StatsModal = ({
       />
       {(isGameLost || isGameWon) && (
         <div className="mt-5 columns-2 items-center items-stretch justify-center text-center dark:text-white sm:mt-6">
-          <div className="inline-block w-full text-left">
+          <div className="inline-block w-full">
             {(!ENABLE_ARCHIVED_GAMES || isLatestGame) && (
               <div>
                 <h5>{NEW_WORD_TEXT}</h5>
