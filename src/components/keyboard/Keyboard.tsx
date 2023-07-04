@@ -1,6 +1,7 @@
+import { BackspaceIcon } from '@heroicons/react/outline'
 import { useEffect } from 'react'
 
-import { DELETE_TEXT, ENTER_TEXT } from '../../constants/strings'
+import { ENTER_TEXT } from '../../constants/strings'
 import { getStatuses } from '../../lib/statuses'
 import { localeAwareUpperCase } from '../../lib/words'
 import { Key } from './Key'
@@ -93,7 +94,7 @@ export const Keyboard = ({
             />
           ))}
           <Key width={65.4} value="DELETE" onClick={onClick}>
-            {DELETE_TEXT}
+            <BackspaceIcon className="h-8 w-8 stroke-[1.5px]"/>
           </Key>
         </div>
       </div>

@@ -16,7 +16,7 @@ export const WRONG_SPOT_MESSAGE = (guess: string, position: number) =>
 export const NOT_CONTAINED_MESSAGE = (letter: string) =>
   `La palabra debe contener ${letter}`
 export const ENTER_TEXT = 'Enter'
-export const DELETE_TEXT = 'Delete'
+export const DELETE_TEXT = ''
 export const STATISTICS_TITLE = 'Estadisticas'
 export const GUESS_DISTRIBUTION_TEXT = 'Distribución de aciertos'
 export const NEW_WORD_TEXT = 'Próximo pinoledle en'
