@@ -31,11 +31,11 @@ export const Navbar = ({
             />
           )}
         </div>
-        <div className="">
+        <div>
           <h1 className="text-2xl font-bold dark:text-white sm:text-3xl">
             <span className="flex items-center">
               PIN
-              <Logo className="h-[1.55rem] w-[1.55rem]" />
+              <Logo className="h-5 w-5 sm:h-[1.55rem] sm:w-[1.55rem]" />
               LEDLE
             </span>
           </h1>
