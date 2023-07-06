@@ -7,10 +7,11 @@ import { MigrationStats } from '../modals/MigrateStatsModal'
 
 export const ImmigratePanel = () => {
   const [isSaveButtonEnabled, setIsSaveButtonEnabled] = useState(false)
+  const [codeError, setCodeError] = useState(false)
 
   const textareaClassNames = {
-    valid: ['bg-gray-100', 'dark:bg-gray-700'],
-    invalid: ['border-red-400', 'dark:border-red-900'],
+    valid: [ 'border-gray-500', 'dark:border-gray-300'],
+    invalid: ['border-red-400', 'dark:border-red-500'],
   }
   const allClassNames = [
     ...textareaClassNames.valid,
@@ -36,11 +37,17 @@ export const ImmigratePanel = () => {
           textareaClassNames.invalid.forEach((cn) => textarea.classList.add(cn))
           return
         }
-
         textareaClassNames.valid.forEach((cn) => textarea.classList.add(cn))
         setIsSaveButtonEnabled(true)
+        setCodeError(false)
       } catch (error) {
-        textareaClassNames.invalid.forEach((cn) => textarea.classList.add(cn))
+        if (text === '') {
+          setCodeError(false)
+          
+        } else {
+          textareaClassNames.invalid.forEach((cn) => textarea.classList.add(cn))
+          setCodeError(true)
+        }
       }
     }
   }
@@ -86,8 +93,9 @@ export const ImmigratePanel = () => {
         onChange={(e) => handleImmigrationCodeChange(e)}
         id="immigration-code"
         rows={8}
-        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
+        className="block w-full rounded-lg border border-gray-300 bg-gray-100 p-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
       ></textarea>
+      {codeError && <span className="block text-red-500 dark:text-red-400 mt-2">Código de transferencia incorrecto prix</span>}
       <button
         disabled={!isSaveButtonEnabled}
         onClick={handleSaveButton}
