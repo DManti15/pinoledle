@@ -1,9 +1,4 @@
-import {
-  BEST_STREAK_TEXT,
-  CURRENT_STREAK_TEXT,
-  SUCCESS_RATE_TEXT,
-  TOTAL_TRIES_TEXT,
-} from '../../constants/strings'
+import { BEST_STREAK_TEXT, CURRENT_STREAK_TEXT, SUCCESS_RATE_TEXT, TOTAL_TRIES_TEXT } from '../../constants/strings'
 import { GameStats } from '../../lib/localStorage'
 
 type Props = {
@@ -19,7 +14,7 @@ const StatItem = ({
 }) => {
   return (
     <div className="m-1 w-1/4 items-center justify-center dark:text-white">
-      <div className="text-3xl font-bold">{value}</div>
+      <div className="text-3xl short:text-2xl font-bold">{value}</div>
       <div className="text-xs">{label}</div>
     </div>
   )
