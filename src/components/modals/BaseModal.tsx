@@ -43,6 +43,7 @@ export const BaseModal = ({ title, children, isOpen, handleClose }: Props) => {
                 onClick={() => handleClose()}
                 tabIndex={0}
                 aria-pressed="false"
+                aria-label="close modal"
                 className="absolute right-4 top-4 border-none"
               >
                 <XIcon className="h-6 w-6 cursor-pointer dark:stroke-white" />
@@ -50,8 +51,8 @@ export const BaseModal = ({ title, children, isOpen, handleClose }: Props) => {
               <div>
                 <div className="text-center">
                   <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100 short:max-w-[150px] short:inline-flex"
+                    as="h2"
+                    className="text-xl font-medium leading-6 text-gray-900 dark:text-gray-100 short:max-w-[150px] short:inline-flex"
                   >
                     {title}
                   </Dialog.Title>

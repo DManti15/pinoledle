@@ -72,9 +72,9 @@ export const StatsModal = ({
       handleClose={handleClose}
     >
       <StatBar gameStats={gameStats} />
-      <h4 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
+      <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
         {GUESS_DISTRIBUTION_TEXT}
-      </h4>
+      </h3>
       <Histogram
         isLatestGame={isLatestGame}
         gameStats={gameStats}
@@ -83,9 +83,9 @@ export const StatsModal = ({
       />
       {(isGameLost || isGameWon) && (
         <div className="mt-5">
-          <h4 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
+          <h3 className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100">
             Respuesta: {solution}
-          </h4>
+          </h3>
           <p className="dark:text-gray-100">
             <strong>Definición:</strong> {definition}<br />
             <span className="italic">e.g.: {example}</span>
@@ -98,7 +98,7 @@ export const StatsModal = ({
           <div className="inline-block w-1/2">
             {(!ENABLE_ARCHIVED_GAMES || isLatestGame) && (
               <div>
-                <h5>{NEW_WORD_TEXT}</h5>
+                <h4>{NEW_WORD_TEXT}</h4>
                 <Countdown
                   className="text-lg font-medium text-gray-900 dark:text-gray-100"
                   date={tomorrow}
