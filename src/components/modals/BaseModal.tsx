@@ -44,7 +44,7 @@ export const BaseModal = ({ title, children, isOpen, handleClose }: Props) => {
                 tabIndex={0}
                 aria-pressed="false"
                 aria-label="close modal"
-                className="absolute right-4 top-4 border-none"
+                className="absolute right-4 top-4 outline-none"
               >
                 <XIcon className="h-6 w-6 cursor-pointer dark:stroke-white" />
               </button>
