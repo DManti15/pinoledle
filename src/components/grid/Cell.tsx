@@ -1,4 +1,5 @@
 import classnames from 'classnames'
+import { useEffect, useState } from 'react'
 
 import { REVEAL_TIME_MS } from '../../constants/settings'
 import { getStoredIsHighContrastMode } from '../../lib/localStorage'
@@ -8,6 +9,8 @@ type Props = {
   value?: string
   status?: CharStatus
   isRevealing?: boolean
+  isGameWon?: boolean
+  isWinnerRow?: boolean
   isCompleted?: boolean
   position?: number
 }
@@ -16,13 +19,26 @@ export const Cell = ({
   value,
   status,
   isRevealing,
+  isGameWon,
+  isWinnerRow,
   isCompleted,
   position = 0,
 }: Props) => {
+  const [delay, setDelay] = useState(false);
   const isFilled = value && !isCompleted
   const shouldReveal = isRevealing && isCompleted
   const animationDelay = `${position * REVEAL_TIME_MS}ms`
+  const newDelay = `${position * 150}ms`
   const isHighContrast = getStoredIsHighContrastMode()
+
+  useEffect(() => {
+    if (isGameWon) {
+      if (!isRevealing) setDelay(true)
+      setTimeout(() => {
+        setDelay(true)
+      }, 1750)
+    }
+  }, [isGameWon, isRevealing])
 
   const classes = classnames(
     'xxshort:w-11 xxshort:h-11 short:text-2xl short:w-12 short:h-12 w-14 h-14 md:w-16 md:h-16 border-solid border-2 flex items-center justify-center mx-0.5 text-4xl font-bold rounded dark:text-white',
@@ -40,13 +56,15 @@ export const Cell = ({
         status === 'correct' && !isHighContrast,
       'present shadowed bg-yellow-500 text-white border-yellow-500':
         status === 'present' && !isHighContrast,
+      'animate-bounce animate-twice animate-duration-[550ms]':
+        status === 'correct' && isGameWon && !isRevealing && isWinnerRow,
       'cell-fill-animation': isFilled,
       'cell-reveal': shouldReveal,
     }
   )
 
   return (
-    <div className={classes} style={{ animationDelay }}>
+    <div className={classes} style={!delay ? { animationDelay } : {animationDelay: newDelay}}>
       <div className="letter-container" style={{ animationDelay }}>
         {value}
       </div>

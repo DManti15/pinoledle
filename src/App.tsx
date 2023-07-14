@@ -142,7 +142,7 @@ function App() {
     if (isGameWon) {
       const winMessage =
         WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
-      const delayMs = REVEAL_TIME_MS * solution.length
+      const delayMs = isRevealing ? (REVEAL_TIME_MS * solution.length) : 0
 
       showSuccessAlert(winMessage, {
         delayMs,
@@ -266,6 +266,7 @@ function App() {
               guesses={guesses}
               currentGuess={currentGuess}
               isRevealing={isRevealing}
+              isGameWon={isGameWon}
               currentRowClassName={currentRowClass}
             />
           </div>
