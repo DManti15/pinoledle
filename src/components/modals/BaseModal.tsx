@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react'
-import { XCircleIcon } from '@heroicons/react/outline'
+import { XIcon } from '@heroicons/react/outline'
 import { Fragment } from 'react'
 
 type Props = {
@@ -43,15 +43,16 @@ export const BaseModal = ({ title, children, isOpen, handleClose }: Props) => {
                 onClick={() => handleClose()}
                 tabIndex={0}
                 aria-pressed="false"
-                className="absolute right-4 top-4"
+                aria-label="close modal"
+                className="absolute right-4 top-4 outline-none"
               >
-                <XCircleIcon className="h-6 w-6 cursor-pointer dark:stroke-white" />
+                <XIcon className="h-6 w-6 cursor-pointer dark:stroke-white" />
               </button>
               <div>
                 <div className="text-center">
                   <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100"
+                    as="h2"
+                    className="text-xl font-medium leading-6 text-gray-900 dark:text-gray-100 short:max-w-[150px] short:inline-flex"
                   >
                     {title}
                   </Dialog.Title>

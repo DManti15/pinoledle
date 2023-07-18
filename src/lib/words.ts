@@ -11,7 +11,7 @@ import queryString from 'query-string'
 import { ENABLE_ARCHIVED_GAMES } from '../constants/settings'
 import { NOT_CONTAINED_MESSAGE, WRONG_SPOT_MESSAGE } from '../constants/strings'
 import { VALID_GUESSES } from '../constants/validGuesses'
-import { WORDS } from '../constants/wordlist'
+import { WORDS, DEFINITIONS, EXAMPLES } from '../constants/wordlist'
 import { getToday } from './dateutils'
 import { getGuessStatuses } from './statuses'
 
@@ -130,8 +130,12 @@ export const getSolution = (gameDate: Date) => {
   const nextGameDate = getNextGameDate(gameDate)
   const index = getIndex(gameDate)
   const wordOfTheDay = getWordOfDay(index)
+  const wordDefinition = DEFINITIONS[index % DEFINITIONS.length]
+  const wordExample = EXAMPLES[index % EXAMPLES.length]
   return {
     solution: wordOfTheDay,
+    solutionDefinition: wordDefinition,
+    solutionExample: wordExample,
     solutionGameDate: gameDate,
     solutionIndex: index,
     tomorrow: nextGameDate.valueOf(),
@@ -176,5 +180,5 @@ export const getIsLatestGame = () => {
   return parsed === null || !('d' in parsed)
 }
 
-export const { solution, solutionGameDate, solutionIndex, tomorrow } =
+export const { solution, solutionDefinition, solutionExample, solutionGameDate, solutionIndex, tomorrow } =
   getSolution(getGameDate())

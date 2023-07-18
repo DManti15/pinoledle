@@ -1,5 +1,3 @@
-import './App.css'
-
 import { ClockIcon } from '@heroicons/react/outline'
 import { format } from 'date-fns'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
@@ -15,44 +13,15 @@ import { MigrateStatsModal } from './components/modals/MigrateStatsModal'
 import { SettingsModal } from './components/modals/SettingsModal'
 import { StatsModal } from './components/modals/StatsModal'
 import { Navbar } from './components/navbar/Navbar'
-import {
-  DATE_LOCALE,
-  DISCOURAGE_INAPP_BROWSERS,
-  LONG_ALERT_TIME_MS,
-  MAX_CHALLENGES,
-  REVEAL_TIME_MS,
-  WELCOME_INFO_MODAL_MS,
-} from './constants/settings'
-import {
-  CORRECT_WORD_MESSAGE,
-  DISCOURAGE_INAPP_BROWSER_TEXT,
-  GAME_COPIED_MESSAGE,
-  HARD_MODE_ALERT_MESSAGE,
-  NOT_ENOUGH_LETTERS_MESSAGE,
-  SHARE_FAILURE_TEXT,
-  WIN_MESSAGES,
-  WORD_NOT_FOUND_MESSAGE,
-} from './constants/strings'
+import { DATE_LOCALE, DISCOURAGE_INAPP_BROWSERS, LONG_ALERT_TIME_MS, MAX_CHALLENGES, REVEAL_TIME_MS, WELCOME_INFO_MODAL_MS } from './constants/settings'
+import { CORRECT_WORD_MESSAGE, DISCOURAGE_INAPP_BROWSER_TEXT, GAME_COPIED_MESSAGE, HARD_MODE_ALERT_MESSAGE, NOT_ENOUGH_LETTERS_MESSAGE, SHARE_FAILURE_TEXT, WIN_MESSAGES, WORD_NOT_FOUND_MESSAGE } from './constants/strings'
 import { useAlert } from './context/AlertContext'
 import { isInAppBrowser } from './lib/browser'
-import {
-  getStoredIsHighContrastMode,
-  loadGameStateFromLocalStorage,
-  saveGameStateToLocalStorage,
-  setStoredIsHighContrastMode,
-} from './lib/localStorage'
+import { getStoredIsHighContrastMode, loadGameStateFromLocalStorage, saveGameStateToLocalStorage, setStoredIsHighContrastMode } from './lib/localStorage'
 import { addStatsForCompletedGame, loadStats } from './lib/stats'
-import {
-  findFirstUnusedReveal,
-  getGameDate,
-  getIsLatestGame,
-  isWinningWord,
-  isWordInWordList,
-  setGameDate,
-  solution,
-  solutionGameDate,
-  unicodeLength,
-} from './lib/words'
+import { findFirstUnusedReveal, getGameDate, getIsLatestGame, isWinningWord, isWordInWordList, setGameDate, solution, solutionDefinition, solutionExample, solutionGameDate, unicodeLength } from './lib/words'
+
+import './App.css'
 
 function App() {
   const isLatestGame = getIsLatestGame()
@@ -173,7 +142,7 @@ function App() {
     if (isGameWon) {
       const winMessage =
         WIN_MESSAGES[Math.floor(Math.random() * WIN_MESSAGES.length)]
-      const delayMs = REVEAL_TIME_MS * solution.length
+      const delayMs = isRevealing ? (REVEAL_TIME_MS * solution.length) : 0
 
       showSuccessAlert(winMessage, {
         delayMs,
@@ -186,7 +155,7 @@ function App() {
         setIsStatsModalOpen(true)
       }, (solution.length + 1) * REVEAL_TIME_MS)
     }
-  }, [isGameWon, isGameLost, showSuccessAlert])
+  }, [isGameWon, isGameLost, showSuccessAlert, isRevealing])
 
   const onChar = (value: string) => {
     if (
@@ -273,7 +242,7 @@ function App() {
 
   return (
     <Div100vh>
-      <div className="flex h-full flex-col">
+      <div className="flex h-full flex-col overflow-hidden xxshort:overflow-auto sm:overflow-auto">
         <Navbar
           setIsInfoModalOpen={setIsInfoModalOpen}
           setIsStatsModalOpen={setIsStatsModalOpen}
@@ -290,13 +259,14 @@ function App() {
           </div>
         )}
 
-        <div className="mx-auto flex w-full grow flex-col px-1 pt-2 pb-8 sm:px-6 md:max-w-7xl lg:px-8 short:pb-2 short:pt-2">
-          <div className="flex grow flex-col justify-center pb-6 short:pb-2">
+        <div className="mx-auto flex w-full grow flex-col pt-2">
+          <div className="mx-auto flex grow flex-col justify-center px-1 pb-6 sm:px-6 md:max-w-7xl lg:px-8 short:pb-2 short:pt-2">
             <Grid
               solution={solution}
               guesses={guesses}
               currentGuess={currentGuess}
               isRevealing={isRevealing}
+              isGameWon={isGameWon}
               currentRowClassName={currentRowClass}
             />
           </div>
@@ -316,6 +286,8 @@ function App() {
             isOpen={isStatsModalOpen}
             handleClose={() => setIsStatsModalOpen(false)}
             solution={solution}
+            definition={solutionDefinition}
+            example={solutionExample}
             guesses={guesses}
             gameStats={stats}
             isLatestGame={isLatestGame}

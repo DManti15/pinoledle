@@ -1,10 +1,4 @@
-import {
-  ReactNode,
-  createContext,
-  useCallback,
-  useContext,
-  useState,
-} from 'react'
+import { createContext, ReactNode, useCallback, useContext, useState } from 'react'
 
 import { ALERT_TIME_MS } from '../constants/settings'
 
@@ -60,6 +54,13 @@ export const AlertProvider = ({ children }: Props) => {
         setIsVisible(true)
 
         if (!persist) {
+          setTimeout(() => {
+            setIsVisible(false)
+            if (onClose) {
+              onClose()
+            }
+          }, durationMs)
+        } else {
           setTimeout(() => {
             setIsVisible(false)
             if (onClose) {
